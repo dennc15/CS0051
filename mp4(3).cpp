@@ -228,6 +228,7 @@ void gameplay(int id, bool isAuto){
         }
         //async
         future<bool> res = async(launch::async, checkAns, id, ch);
+        res.get();
         finishRound.arrive_and_wait();
         
     }

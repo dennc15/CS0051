@@ -3,7 +3,7 @@
 #include<chrono>
 #include<barrier> //for waiting for all players to draw their cards before showing 
 #include<latch> //for waiting for all players to be ready before the game starts
-#include<future> //aynchonous evaluation
+#include<future> //asynchronous evaluation
 #include<mutex>  //for synchronized printing
 #include<cstdlib> //for random card generation
 #include<ctime>
@@ -33,7 +33,7 @@ vector<int> roundWins(playerNum, 0);
 vector<pair<pair<int, int>, string>> cardDrawn(playerNum);
 vector<vector<int>> playerAns(roundTotal, vector<int>(playerNum, 0));
 
-struct Sync {
+struct Sync {        
     promise<void> p;
     future<void> f;
     
@@ -42,7 +42,7 @@ struct Sync {
 
 vector<Sync> roundSync(playerNum);
 
-barrier roundDone(playerNum, [] {
+barrier roundDone(playerNum, [] {        //wait for all players to finish the round
     lock_guard<mutex> lock(printMtx);
     
     cout << "\nEvaluating cards..." << endl;
@@ -101,7 +101,7 @@ int main()
         
         switch(choice)
         {
-            case 1: //manual Play
+            case 1: //manual play
                 gameStart(playerNum, false);
                 return 0;
             case 2:

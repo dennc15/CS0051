@@ -59,7 +59,7 @@ int main()
             cout << "Enter your player ID (1-3): ";
             string playerID;
             getline (cin, playerID);
-            send (sckt, name.c_str(), name.length(), 0);
+            send (sckt, playerID.c_str(), playerID.length(), 0);
         }
         
         if (msg.find("YOUR_TURN") != string::npos)

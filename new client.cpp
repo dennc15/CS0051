@@ -54,7 +54,7 @@ int main()
         
         cout << msg << endl;
         
-        if (msg.find("ENTER_NAME") != string::npos)
+        if (msg.find("ENTER_ID") != string::npos)
         {
             cout << "Enter your player ID (1-3): ";
             string playerID;
